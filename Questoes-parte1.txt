@@ -1,0 +1,60 @@
+Questões de revisão para a Primeira VA
+
+1) É possível implementar qualquer porta lógica básica com portas NAND. Utilize várias portas NAND combinadas para implementar as seguintes operações:
+
+- Negação (inverso)
+
+- AND
+
+- OR
+
+
+2) Desenhe o grafo de uma máquina de estados finitos para uma radiola de fichas. São aceitas as seguintes moedas: 5 centavos, 10 centavos e 25 centavos. A música deve tocar sempre que for colocado pelo menos 40 centavos na radiola.
+
+
+3) Um processador gasta 20% do seu tempo com instruções do tipo R, 30% com instruções do tipo I e o restante com instruções do tipo J.
+
+Qual seria a melhora geral no desempenho se:
+
+a) Melhorássemos o desempenho da ULA (tipo R) em 70%?
+
+b) Melhorássemos o desempenho das instruções do tipo I em 90%?
+
+c) Melhorássemos o desempenho das instruções do tipo J em 45%?
+
+d) Considerássemos todas as melhorias anteriores?
+
+
+4) Descreva a funcionalidade das seguintes instruções:
+
+a) LUI
+
+b) JR
+
+c) JAL
+
+d) BNE
+
+
+5) Considere o seguinte código:
+
+
+.text
+
+addi $1,$0, 5
+
+addi $2, $0, 1
+
+loop:  mult $2, $1
+
+mflo $2
+
+addi $1, $1, -1
+
+bne $0, $1, loop
+
+fim:	add $3, $0, $2
+
+
+Reimplemente o código para que tenha o mesmo efeito quando executado, sabendo que a instrução de multiplicação usada não está funcionando.
+
