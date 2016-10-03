@@ -38,6 +38,32 @@ A or B = A -         _     _
    c) 1 - (T/t) = 1 - [0,2t + 0,3t + (0,5 * 0,55)t]/t = 1 - [0,5t + 0,275t]/t = 1 - 0,775 = 0,225
    d) 1 - (T/t) = 1 - [(0,2 * 0,3)t + (0,3 * 0,1)t + (0,5 * 0,55)t] = 1 - [0,06t + 0,03t + 0,275t]/t = 1 - 0,365 = 0,635
 
+4) add $s1, $s2, $s3: soma os inteiros de dois registradores ($s2 e $s3) e armazena o resultado no registrrador inicial ($s1)
+   addi $s1, $s2, 100: soma o inteiro de uma registrador($s2) com um inteiro imediato(100) e armazena o resultado no registrrador inicial ($s1)
+   addiu $$s1, $s2, 100: mesmo de addi mas sem overflow
+   addu $s1, $s2, $s3: mesmo de add mas sem overflow
+   and $s1, $s2, $s3: realiza o teste lógico "and" entre dois registradores ($s2 e $s3), checando bit a bit os dois registradores, e armazena o resultado em $s1
+   andi $s1, $s2, 1: realiza o teste lógico entre um registrador ($s2) e um imediato (1), checando bit a bit o registrador e o imediato, e armazena o resultado em $s1
+   beq(branch and equal) $s1, $s2, posi: pula para uma posicao (posi) do programa se os dois registradores ($s1 e $s2) forem iguais
+   bltz(branch less than zero) $s1, posi: pula para uma posicao (posi) do programa se o registrador for menor que 0
+   bne(beanch not equal) $s1, $s2, posi: pula para uma posicao (posi) do programa se os registraores ($s1, $s2) não forem iguais
+   div $s1, $s2: divide o primeiro registrador($s1) pelo segundo($s2) e armazena o quociente em lo e o resto em hi
+   divu $s1, $s2: divide o primeiro registrador($s1) pelo segundo($s2) e armazena o quociente em lo e o resto em hi. mas sem overflow
+   j(jump) posi: pula para uma posicao do programa
+   jal(jum and link) posi: pula para uma posicao do programa e linka a posicao em que o programa estava rodando antes do pulo
+   jr(jump registrer) jr $s1: pula para o endereco contido no registrador($s1)
+   lb(load byte) lb $s1, 100($s1): carrega, no registrador $s1, 100 + $s2
+   lbu(load byte unsigned) lbu $s1, 100($s1): carrega, no registrador $s1, 100 + $s2. mas mantendo o sinal positivo
+   lui(load upper imediate) lui $s1, 10: carrega, no registrador $s1, o valor do imediato (10(em bianrio)) com 16 zeros à esquerda
+   lw(load word) lw $s1, 10($s2): carrega em $s1 a palavra contida em $s2
+   mfhi(move from high) mfhi $s1: carrega em $s1 o conteudo de hi
+   mflo(move from low) mflo $s1: carrega em $s1 o conteudo de lo
+   mult $s1, $s2: multiplica os registradores $s1 e $s2  e armazena metade do resultado(em bits) em hi e metade em lo
+   multu $s1, $s2: multiplica os registradores $s1 e $s2  e armazena metade do resultado(em bits) em hi e metade em lo. mas sem tratamento do sinal
+   nor(not or) nor $s1, $s2, $s3: realiza a operacao logica not or(bit a bit) entre os dois registradores($s2, $s3) e armazena o resultado em $s1
+   or $s1, $s2, $s3: realiza a operacao logica or(bit a bit) entre os dois registradores($s2, $s3) e armazena o resultado em $s1
+   ori $s1, $s2, 1: realiza a operacao logica or(bit a bit) entre o registradore $s2 e o imediato e armazena o resultado em $s1
+   sb(store byte) sb $s1, 10($s2): o byte menos significativo de $s2 eh carregado em $s1
 
 10) a)
     * hex = 22   bin = 0010 0010
