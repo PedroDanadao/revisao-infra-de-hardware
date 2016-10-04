@@ -46,7 +46,7 @@ A or B = A -         _     _
    andi $s1, $s2, 1: realiza o teste lógico entre um registrador ($s2) e um imediato (1), checando bit a bit o registrador e o imediato, e armazena o resultado em $s1
    beq(branch and equal) $s1, $s2, posi: pula para uma posicao (posi) do programa se os dois registradores ($s1 e $s2) forem iguais
    bltz(branch less than zero) $s1, posi: pula para uma posicao (posi) do programa se o registrador for menor que 0
-   bne(beanch not equal) $s1, $s2, posi: pula para uma posicao (posi) do programa se os registraores ($s1, $s2) não forem iguais
+   bne(branch not equal) $s1, $s2, posi: pula para uma posicao (posi) do programa se os registraores ($s1, $s2) não forem iguais
    div $s1, $s2: divide o primeiro registrador($s1) pelo segundo($s2) e armazena o quociente em lo e o resto em hi
    divu $s1, $s2: divide o primeiro registrador($s1) pelo segundo($s2) e armazena o quociente em lo e o resto em hi. mas sem overflow
    j(jump) posi: pula para uma posicao do programa
@@ -78,6 +78,38 @@ A or B = A -         _     _
    syscall: gera uma interrupcao no software(chamada do sistema)
    xor $s1, $s2, $s3: realiza a operacao logica xor(bit a bit) entre os registradores $s2 e $s3, e armazena o resultado em $s1
    xori $s1, $s2, 10: realiza a operacao logica xor(bit a bit) entre o registrador $s2 e 10(imediato), e armazena o resultado em $s1
+
+
+7) slt $t0, $s2, $s1
+   
+ a)slt $t0, $s1, $s2
+ 
+ b)slt $t0, $s1, $s2
+   bne $s1, $s2, else
+ 
+c)add $t1, $s1, $s2
+  slt $t0, $zero, $t1
+
+d)add $t1, $s1, $s2
+  add $t2, $s3, $s4
+  slt $t0, $t1, $t2
+
+8) addi $t1, $zero, 1
+   addi $t2, $zero, 2
+   
+   beq $zero, $s1, case0
+   beq $t1, $s1, case1
+   beq $t2, $s2, case2
+
+   case0:	addi $s2, $s2, 1
+         	syscall
+
+   case1:	sub $s2, $s2, $t1
+   		syscall
+
+   case2:	sll $s3, $s3, 1
+                syscall
+
 
 10) a)
     * hex = 22   bin = 0010 0010
@@ -142,3 +174,41 @@ A or B = A -         _     _
     b)
     * 10,21 = 3,77777...
     * 1021,2210 = 34,92592....
+    * 10212210,21001020 = 2829,7828074988568815
+    c)
+    * 54,4 = 43,5
+    * 534,60 = 348,763671875
+    * 534607,126470 = 178567,16915893555
+    d)
+    * 7a,4 = 94,33333333333333
+    * 7a4,539 = 1132,4427083333333
+    * 7a4539,1b0 = 1956861,1597222222
+    e)
+    * 8,e = 8,875
+    * 8e,3a = 128,2265625
+    * 823a,51c0 = 33338,3193359375
+
+
+12) a)
+    * 11,1100001001
+
+
+13)
+ a) 1001
+  * 0101
+    1001
+  100100
+  101101
+
+ b)  1101
+   * 1011
+     1101
+    11010
+  1101000
+ 10001111
+ 
+ c)  0,1001
+     0,0101
+       1001
+     100100
+ 0,00101101
