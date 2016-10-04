@@ -64,6 +64,20 @@ A or B = A -         _     _
    or $s1, $s2, $s3: realiza a operacao logica or(bit a bit) entre os dois registradores($s2, $s3) e armazena o resultado em $s1
    ori $s1, $s2, 1: realiza a operacao logica or(bit a bit) entre o registradore $s2 e o imediato e armazena o resultado em $s1
    sb(store byte) sb $s1, 10($s2): o byte menos significativo de $s2 eh carregado em $s1
+   sll(shift left logical) sll $s1, $s2, 10: move o conteudo do registrador $s2(em bits) uma certa quantidade de bits(nesse caso 10), preecnchendo com zero oque fica à esquerda, e armazena o resultado em $s1.
+   sllv(shift left logical variable) sllv $s1, $s2, $s3: move o conteudo do registrador $s2(em bits) uma certa quantidade de bits(dessa vez ao inves de 10, eh o numero armazenado em $s3), preecnchendo com zero oque fica à esquerda, e armazena o resultado em $s1.
+   slt(set less than) slt $s1, $s2, $s3: compara $s2 com $s3 e caso $s2 seja menor que $s3, $s1 recebe 1. caso contrario, $s1 recebe 0
+   slt(set less than immediate) slti $s1, $s2, 100: compara $s2 com 100(imediato) e caso $s2 seja menor que 100, $s1 recebe 1. caso contrario, $s1 recebe 0
+   sltu(set less than immediate unsigned) slti $s1, $s2, 100: compara $s2 com 100(imediato) e caso $s2 seja menor que 100, $s1 recebe 1. caso contrario, $s1 recebe 0(a diferenca desse pro anterior, eh que esse soh aceita imediatos positivos(unsigned = sem sinal))
+   sra(shift right arithmetic) sra $s1, $s2, 3: move 3(imediato) casas para direita o valor de $s2(em bits) e armazena o resultado em $s1(o sinal permanece)
+   srl(shift right logical) srl $s1, $s2, 3: move 3(imediato) casas para direita o valor de $s2(em bits) e armazena o resultado em $s1(o sinal fica positivo)
+   srlv(shift right logical variable) srlv $s1, $s2, $s3: move $s3(valor armazenado em $s3) casas para direita o valor de $s2(em bits) e armazena o resultado em $s1(o sinal fica positivo)
+   sub $s1, $s2 $s3: subtrai $s3 de $s2 e armazena o resultado em $s1
+   subu $s1, $s2 $s3: subtrai $s3 de $s2 e armazena o resultado em $s1(deixando o resultado positivo)
+   sw(store word) sw $s1, 10($s2): armazena o conteudo de $s2 em $s1
+   syscall: gera uma interrupcao no software(chamada do sistema)
+   xor $s1, $s2, $s3: realiza a operacao logica xor(bit a bit) entre os registradores $s2 e $s3, e armazena o resultado em $s1
+   xori $s1, $s2, 10: realiza a operacao logica xor(bit a bit) entre o registrador $s2 e 10(imediato), e armazena o resultado em $s1
 
 10) a)
     * hex = 22   bin = 0010 0010
